@@ -7,8 +7,14 @@ function Matches() {
   return (
     <div className="Matches">
       <p className="matchesTitleText">MATCHES</p>
-      <Heading>MATCH 1</Heading>
-      <Match></Match>
+      {new Array(10).fill(0).map((_, i) => {
+        return (
+          <div className="matchAndHeading" key={i}>
+            <Heading>{`MATCH ${i + 1}`}</Heading>
+            <Match></Match>
+          </div>
+        );
+      })}
     </div>
   );
 }
