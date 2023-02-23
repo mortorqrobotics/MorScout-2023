@@ -1,0 +1,16 @@
+{
+  "Functional Component for React": {
+    "prefix": "component",
+    "body": [
+      "import React from \"react\";",
+      "import \"./$TM_FILENAME_BASE.css\";",
+      "",
+      "function $TM_FILENAME_BASE() {",
+      "  return <div className=\"$TM_FILENAME_BASE\"></div>;",
+      "}",
+      "",
+      "export default $TM_FILENAME_BASE;"
+    ],
+    "description": "Functional Component for React"
+  }
+}

@@ -1,3 +1,4 @@
+import Matches from "Pages/Match/Matches";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
@@ -7,6 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/match/matches" element={<Matches />}></Route>
       </Routes>
     </div>
   );

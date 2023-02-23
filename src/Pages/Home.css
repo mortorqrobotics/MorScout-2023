@@ -1,0 +1,20 @@
+.homeButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 51px;
+  margin-top: 90px;
+}
+
+.Home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 60px;
+}

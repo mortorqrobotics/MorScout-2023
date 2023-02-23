@@ -1,0 +1,10 @@
+.LargeButton {
+  width: 261px;
+  height: 70px;
+  display: grid;
+  place-content: center;
+  background-color: var(--highlight-gray);
+  border-radius: 7px;
+  color: white;
+  font-size: 25px;
+}
