@@ -1,5 +1,5 @@
-import Heading from "Components/Match/Heading";
-import Match from "Components/Match/Match";
+import Heading from "Components/Match/MatchSelector/Heading";
+import Match from "Components/Match/MatchSelector/Match";
 import React from "react";
 import "./Matches.css";
 
@@ -11,7 +11,7 @@ function Matches() {
         return (
           <div className="matchAndHeading" key={i}>
             <Heading>{`MATCH ${i + 1}`}</Heading>
-            <Match></Match>
+            <Match match={i + 1} teamNumber="1515"></Match>
           </div>
         );
       })}
