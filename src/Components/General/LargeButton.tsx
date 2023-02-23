@@ -15,6 +15,7 @@ function LargeButton({ children: buttonText, onClick = () => {}, to }: Props) {
       className="LargeButton"
       onClick={() => {
         if (to) navigate(to);
+        else onClick();
       }}
     >
       {buttonText}

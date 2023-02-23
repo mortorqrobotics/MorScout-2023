@@ -1,6 +1,6 @@
 import React from "react";
 import "./Match.css";
-import SmallButton from "./SmallButton";
+import SmallMarker from "./SmallMarker";
 
 interface Props {
   match: number;
@@ -10,24 +10,24 @@ interface Props {
 function Match({ match, teamNumber }: Props) {
   return (
     <div className="Match">
-      <SmallButton isRed={false} to={`/match/${match}/${teamNumber}/login`}>
+      <SmallMarker isRed={false} to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
-      <SmallButton isRed={false} to={`/match/${match}/${teamNumber}/login`}>
+      </SmallMarker>
+      <SmallMarker isRed={false} to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
-      <SmallButton isRed={false} to={`/match/${match}/${teamNumber}/login`}>
+      </SmallMarker>
+      <SmallMarker isRed={false} to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
-      <SmallButton to={`/match/${match}/${teamNumber}/login`}>
+      </SmallMarker>
+      <SmallMarker to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
-      <SmallButton to={`/match/${match}/${teamNumber}/login`}>
+      </SmallMarker>
+      <SmallMarker to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
-      <SmallButton to={`/match/${match}/${teamNumber}/login`}>
+      </SmallMarker>
+      <SmallMarker to={`/match/${match}/${teamNumber}/login`}>
         {teamNumber}
-      </SmallButton>
+      </SmallMarker>
     </div>
   );
 }

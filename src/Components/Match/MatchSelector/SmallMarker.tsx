@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./SmallButton.css";
+import "./SmallMarker.css";
 
 interface Props {
   children: string;
@@ -13,7 +13,7 @@ function SmallButton({ children: buttonText, isRed = true, to = "" }: Props) {
 
   return (
     <div
-      className="SmallButton"
+      className="SmallMarker"
       style={{ backgroundColor: `var(--${isRed ? "red" : "blue"})` }}
       onClick={() => navigate(to)}
     >
