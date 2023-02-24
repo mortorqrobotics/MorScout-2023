@@ -1,0 +1,31 @@
+.CommentBox {
+  width: 321px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.CommentBox p {
+  color: var(--text-gray);
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.CommentBox textarea {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 3px solid var(--text-gray);
+  font-family: "Lato", sans-serif;
+  padding-left: 10px;
+  box-sizing: border-box;
+  color: var(--text-gray);
+  font-size: 15px;
+  width: 321px;
+  height: 151px;
+  padding-top: 8px;
+}
+
+.CommentBox textarea:focus {
+  outline-width: 0px;
+}

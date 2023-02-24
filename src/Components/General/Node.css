@@ -1,0 +1,14 @@
+.Node {
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  position: relative;
+}
+
+.Node img {
+  width: 65%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,4 +1,4 @@
-.MatchScout {
+.MatchMain {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -6,24 +6,24 @@
   font-weight: 400;
 }
 
-.MatchScout > p {
+.MatchMain > p {
   margin-top: 130px;
   font-size: 37px;
   color: var(--text-gray);
 }
 
-.MatchScout > .LargeButton:first-of-type {
+.MatchMain > .LargeButton:first-of-type {
   margin-top: 39px;
 }
 
-.MatchScout > .LargeButton {
+.MatchMain > .LargeButton {
   margin-top: 29px;
 }
 
-.MatchScout > .CommentBox {
+.MatchMain > .CommentBox {
   margin-top: 53px;
 }
 
-.MatchScout > .SmallButton {
+.MatchMain > .SmallButton {
   margin-top: 16px;
 }

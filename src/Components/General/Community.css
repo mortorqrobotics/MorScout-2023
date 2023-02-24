@@ -1,0 +1,11 @@
+.Community {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 80vw;
+  height: 70vh;
+  border-radius: 8px;
+  border: 3px solid var(--text-gray);
+  background-color: var(--text-gray);
+  gap: 1px;
+}

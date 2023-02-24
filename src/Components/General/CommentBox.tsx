@@ -5,7 +5,7 @@ function CommentBox() {
   return (
     <div className="CommentBox">
       <p>COMMENTS</p>
-      <textarea cols={30} rows={10}></textarea>
+      <textarea placeholder="Your comments..."></textarea>
     </div>
   );
 }

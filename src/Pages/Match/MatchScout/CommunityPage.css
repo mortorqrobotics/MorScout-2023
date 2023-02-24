@@ -1,0 +1,12 @@
+.CommunityPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.CommunityPage .SmallButton {
+  margin-top: 10px;
+  font-size: 18px;
+}
