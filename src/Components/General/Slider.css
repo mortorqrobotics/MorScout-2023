@@ -1,0 +1,19 @@
+.Slider {
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  background: #d3d3d3;
+  outline: none;
+  appearance: none;
+}
+
+.Slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  opacity: 0.9;
+  background: #282828;
+  cursor: pointer;
+}
