@@ -24,7 +24,6 @@ function App() {
           <Route path="/match/matches" element={<Matches />}></Route>
           <Route path="/match/:match/:team/login" element={<Login />}></Route>
           <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
-          <Route path="/match/:match/:team/scout/community" element={<CommunityPage />}></Route>
         </Route>
       </Routes>
     </div>
