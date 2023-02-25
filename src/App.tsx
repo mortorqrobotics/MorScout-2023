@@ -1,11 +1,12 @@
 import BackArrow from "Components/General/BackArrow";
-import Login from "Pages/Login";
+import Login, { PageOptions } from "Pages/Login";
 import Matches from "Pages/Match/MatchSelector/Matches";
 import MatchScout from "Pages/Match/MatchScout/MatchScout";
 import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
-import CommunityPage from "Pages/Match/MatchScout/CommunityPage";
+import PitTeamList from "Pages/Match/PitScout/PitTeamList";
+import PitScout from "Pages/Match/PitScout/PitScout";
 
 function App() {
   return (
@@ -22,8 +23,14 @@ function App() {
           }
         >
           <Route path="/match/matches" element={<Matches />}></Route>
-          <Route path="/match/:match/:team/login" element={<Login />}></Route>
+          <Route
+            path="/match/:match/:team/login"
+            element={<Login page={PageOptions.Match} />}
+          ></Route>
           <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
+          <Route path="/pit/:team/login" element={<Login page={PageOptions.Pit} />}></Route>
+          <Route path="/pit/teams" element={<PitTeamList />}></Route>
+          <Route path="/pit/:team/scout" element={<PitScout />}></Route>
         </Route>
       </Routes>
     </div>

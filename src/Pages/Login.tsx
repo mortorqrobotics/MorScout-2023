@@ -4,13 +4,26 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Login.css";
 
-function Login() {
-  let { match, team } = useParams();
+enum PageOptions {
+  Match,
+  Pit,
+}
+
+interface Params {
+  page: PageOptions;
+}
+
+function Login({ page }: Params) {
+  let params = useParams();
   let [name, setName] = useState("");
   let navigate = useNavigate();
 
   let handleSubmit = () => {
-    navigate(`/match/${match}/${team}/scout`, { state: { user: name } });
+    if (page === PageOptions.Match) {
+      return navigate(`/match/${params.match}/${params.team}/scout`, { state: { user: name } });
+    }
+
+    return navigate(`/pit/${params.team}/scout`, { state: { user: name } });
   };
 
   return (
@@ -23,3 +36,4 @@ function Login() {
 }
 
 export default Login;
+export { PageOptions };

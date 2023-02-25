@@ -1,0 +1,21 @@
+.PitTeamList {
+  font-family: "Lato", sans-serif;
+  color: var(--text-gray);
+  font-size: 37px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.pitTeams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.pitTeams > .SmallButton {
+  width: 50vw;
+}
