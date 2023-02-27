@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cone from "Assets/cone.png";
 import Cube from "Assets/cube.png";
 import "./Node.css";
+import { CurrentPiece, Rows, setCurrentPieceType } from "./Community";
 
 enum Color {
   Red = "red",
@@ -15,28 +16,25 @@ enum PieceTypes {
   Both,
 }
 
-enum CurrentPiece {
-  Cone,
-  Cube,
-  None,
-}
-
 interface Props {
   color?: Color;
   pieceType: PieceTypes;
+  currentPiece: CurrentPiece;
+  setCurrentPiece: setCurrentPieceType;
+  row: Rows;
+  index: number;
 }
 
-function Node({ color, pieceType }: Props) {
-  let [piece, setPiece] = useState(CurrentPiece.None);
+function Node({ color, pieceType, currentPiece, setCurrentPiece, row, index }: Props) {
   return (
     <div
       className="Node"
       style={{ backgroundColor: `var(--${color})` }}
-      onClick={() => cycleNode(pieceType, piece, setPiece)}
+      onClick={() => cycleNode(pieceType, currentPiece, row, index, setCurrentPiece)}
     >
-      {piece == CurrentPiece.Cone ? (
+      {currentPiece === "Cone" ? (
         <img src={Cone} />
-      ) : piece == CurrentPiece.Cube ? (
+      ) : currentPiece === "Cube" ? (
         <img src={Cube} />
       ) : (
         <></>
@@ -48,18 +46,20 @@ function Node({ color, pieceType }: Props) {
 function cycleNode(
   pieceType: PieceTypes,
   currentPiece: CurrentPiece,
-  setPiece: React.Dispatch<React.SetStateAction<CurrentPiece>>
+  row: Rows,
+  index: number,
+  setPiece: setCurrentPieceType
 ) {
   if (pieceType == PieceTypes.Cone) {
-    if (currentPiece == CurrentPiece.Cone) return setPiece(CurrentPiece.None);
-    setPiece(CurrentPiece.Cone);
+    if (currentPiece == "Cone") return setPiece(row, index, "None");
+    setPiece(row, index, "Cone");
   } else if (pieceType == PieceTypes.Cube) {
-    if (currentPiece == CurrentPiece.Cube) return setPiece(CurrentPiece.None);
-    setPiece(CurrentPiece.Cube);
+    if (currentPiece == "Cube") return setPiece(row, index, "None");
+    setPiece(row, index, "Cube");
   } else {
-    if (currentPiece == CurrentPiece.None) return setPiece(CurrentPiece.Cone);
-    else if (currentPiece == CurrentPiece.Cone) return setPiece(CurrentPiece.Cube);
-    setPiece(CurrentPiece.None);
+    if (currentPiece == "None") return setPiece(row, index, "Cone");
+    else if (currentPiece == "Cone") return setPiece(row, index, "Cube");
+    setPiece(row, index, "None");
   }
 }
 

@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Star from "./Star";
 import "./StarSelector.css";
 
-function StarSelector() {
+interface Props {
+  onChange?: (newRating: number) => void;
+}
+
+function StarSelector({ onChange = () => {} }: Props) {
   let [rating, setRating] = useState(0);
 
   let handleClick = (i: number) => {
     if (i + 1 === rating && rating !== 0) return setRating(0);
     setRating(i + 1);
   };
+
+  useEffect(() => {
+    onChange(rating);
+  }, [rating]);
 
   return (
     <div className="StarSelector">

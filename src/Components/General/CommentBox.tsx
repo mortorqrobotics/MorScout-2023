@@ -3,13 +3,17 @@ import "./CommentBox.css";
 
 interface Props {
   useLabel?: boolean;
+  onChange?: (newValue: string) => void;
 }
 
-function CommentBox({ useLabel = true }: Props) {
+function CommentBox({ useLabel = true, onChange = () => {} }: Props) {
   return (
     <div className="CommentBox">
       {useLabel ? <p>COMMENTS</p> : <></>}
-      <textarea placeholder="Your comments..."></textarea>
+      <textarea
+        placeholder="Your comments..."
+        onChange={(e) => onChange(e.target.value)}
+      ></textarea>
     </div>
   );
 }
