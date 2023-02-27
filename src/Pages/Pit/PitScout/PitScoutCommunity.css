@@ -1,0 +1,12 @@
+.PitScoutCommunity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.PitScoutCommunity .SmallButton {
+  margin-top: 10px;
+  font-size: 18px;
+}

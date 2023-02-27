@@ -29,8 +29,8 @@ function App() {
           ></Route>
           <Route path="/pit/:team/login" element={<Login page={PageOptions.Pit} />}></Route>
           <Route path="/pit/teams" element={<PitTeamList />}></Route>
-          <Route path="/pit/:team/scout" element={<PitScout />}></Route>
         </Route>
+        <Route path="/pit/:team/scout" element={<PitScout />}></Route>
         <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
       </Routes>
     </div>
