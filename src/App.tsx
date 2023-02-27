@@ -5,8 +5,8 @@ import MatchScout from "Pages/Match/MatchScout/MatchScout";
 import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
-import PitTeamList from "Pages/Match/PitScout/PitTeamList";
-import PitScout from "Pages/Match/PitScout/PitScout";
+import PitTeamList from "Pages/Pit/PitTeamList/PitTeamList";
+import PitScout from "Pages/Pit/PitScout/PitScout";
 
 function App() {
   return (

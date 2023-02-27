@@ -14,3 +14,7 @@ body {
   padding: 0px;
   background-color: var(--background-gray);
 }
+
+#root {
+  height: 100%;
+}

@@ -1,32 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@200&family=Montserrat:wght@200&family=Open+Sans:wght@300&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-}
 
-:root {
-  --text-gray: #c9c3c3;
-  --background-gray: #403c3c;
-  --highlight-gray: #686666;
-}
-
-body {
-  font-family: "Lexend", sans-serif;
-  background: var(--background-gray);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.dropdown {
-  min-width: 15em;
+.Dropdown {
+  width: 80vw;
   position: relative;
   margin: 0;
 }
 
-.dropdown * {
+.Dropdown * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -44,7 +24,6 @@ body {
   cursor: pointer;
   transition: all 0.3s;
   width: 314.19px;
-  text-transform: capitalize;
 }
 
 .select-clicked {
@@ -94,7 +73,6 @@ body {
   border-radius: 0.5em;
   cursor: pointer;
   color: var(--text-gray);
-  text-transform: capitalize;
 }
 
 .menu li:hover {

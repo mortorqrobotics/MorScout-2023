@@ -1,10 +1,14 @@
 import React from "react";
 import "./CommentBox.css";
 
-function CommentBox() {
+interface Props {
+  useLabel?: boolean;
+}
+
+function CommentBox({ useLabel = true }: Props) {
   return (
     <div className="CommentBox">
-      <p>COMMENTS</p>
+      {useLabel ? <p>COMMENTS</p> : <></>}
       <textarea placeholder="Your comments..."></textarea>
     </div>
   );

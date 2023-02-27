@@ -6,7 +6,7 @@ interface Props {
   options: string[];
 }
 
-const Dropdown = ({ options }: Props) => {
+function Dropdown({ options }: Props) {
   const [selectedOption, setSelectedOption] = useState(options[0]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const Dropdown = ({ options }: Props) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="Dropdown">
       <div className={`select ${isOpen ? "select-clicked" : ""}`} onClick={handleClick}>
         <span className="selected">{selectedOption}</span>
         <div className={`caret ${isOpen ? "caret-rotate" : ""}`}></div>
@@ -38,13 +38,6 @@ const Dropdown = ({ options }: Props) => {
       </ul>
     </div>
   );
-};
-export default function DropdownFunction() {
-  const options = ["item 1", "item 2", "item 3", "item 4", "item 5"];
-
-  return (
-    <div className="d1">
-      <Dropdown options={options} />
-    </div>
-  );
 }
+
+export default Dropdown;
