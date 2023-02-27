@@ -27,11 +27,11 @@ function App() {
             path="/match/:match/:team/login"
             element={<Login page={PageOptions.Match} />}
           ></Route>
-          <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
           <Route path="/pit/:team/login" element={<Login page={PageOptions.Pit} />}></Route>
           <Route path="/pit/teams" element={<PitTeamList />}></Route>
           <Route path="/pit/:team/scout" element={<PitScout />}></Route>
         </Route>
+        <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
       </Routes>
     </div>
   );

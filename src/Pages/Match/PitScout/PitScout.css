@@ -1,0 +1,36 @@
+.PitScout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lato", sans-serif;
+  color: var(--text-gray);
+}
+
+.PitScout h1 {
+  margin-top: 119px;
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.PitScout .InputBox {
+  width: 80vw;
+  height: 54px;
+}
+
+.PitScout p {
+  font-weight: 400;
+  font-size: 19px;
+}
+
+.PitScout .LabledComponent:first-of-type {
+  margin-top: 31px;
+}
+
+.PitScout .LabledComponent {
+  margin-top: 9px;
+}
+
+.PitScout .LabledComponent p {
+  margin-bottom: 9px;
+}

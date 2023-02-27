@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@200&family=Montserrat:wght@200&family=Open+Sans:wght@300&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --text-gray: #c9c3c3;
+  --background-gray: #403c3c;
+  --highlight-gray: #686666;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  background: var(--background-gray);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dropdown {
+  min-width: 15em;
+  position: relative;
+  margin: 0;
+}
+
+.dropdown * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.select {
+  background-color: var(--background-gray);
+  color: var(--text-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid var(--text-gray);
+  border-radius: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 314.19px;
+  text-transform: capitalize;
+}
+
+.select-clicked {
+  border: 3px #282828 solid;
+  box-shadow: 0 0 0.8em var(--highlight-gray);
+}
+
+.select:hover {
+  background-color: var(--background-gray);
+}
+
+.caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: all 0.3s;
+}
+
+.caret-rotate {
+  transform: rotate(180deg);
+}
+
+.menu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background: var(--background-gray);
+  border: 1px #363a43 solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: #9fa5b5;
+  position: absolute;
+  top: 3em;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.menu li {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+  color: var(--text-gray);
+  text-transform: capitalize;
+}
+
+.menu li:hover {
+  background-color: #2a2d35;
+  color: white;
+}
+
+.active {
+  background: var(--highlight-gray);
+}
+
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+.d1 {
+  margin: 0;
+  padding: 0;
+}
