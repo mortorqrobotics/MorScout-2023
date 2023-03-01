@@ -56,12 +56,6 @@ interface Props {
   handleChange: (newState: CommunityState) => void;
 }
 
-let defaultCommunity = {
-  B: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-  M: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-  T: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-};
-
 function Community({ defaultCommunity, handleChange }: Props) {
   let [communityState, setCommunityState] = useState<CommunityState>(defaultCommunity);
 
