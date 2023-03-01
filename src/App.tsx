@@ -30,8 +30,8 @@ function App() {
           <Route path="/pit/:team/login" element={<Login page={PageOptions.Pit} />}></Route>
           <Route path="/pit/teams" element={<PitTeamList />}></Route>
         </Route>
-        <Route path="/pit/:team/scout" element={<PitScout />}></Route>
-        <Route path="/match/:match/:team/scout" element={<MatchScout />}></Route>
+        <Route path="/pit/:team/:user/scout" element={<PitScout />}></Route>
+        <Route path="/match/:match/:team/:user/scout" element={<MatchScout />}></Route>
       </Routes>
     </div>
   );

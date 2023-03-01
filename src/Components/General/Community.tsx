@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Node, { Color, PieceTypes } from "./Node";
 import "./Community.css";
 import cloneDeep from "lodash.clonedeep";
@@ -53,9 +53,16 @@ type setCurrentPieceType = (row: Rows, index: number, newValue: CurrentPiece) =>
 
 interface Props {
   defaultCommunity: CommunityState;
+  handleChange: (newState: CommunityState) => void;
 }
 
-function Community({ defaultCommunity }: Props) {
+let defaultCommunity = {
+  B: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+  M: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+  T: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+};
+
+function Community({ defaultCommunity, handleChange }: Props) {
   let [communityState, setCommunityState] = useState<CommunityState>(defaultCommunity);
 
   let setCurrentPiece = (row: Rows, index: number, newValue: CurrentPiece) => {
@@ -63,6 +70,10 @@ function Community({ defaultCommunity }: Props) {
     newCommunityState[row][index] = newValue;
     setCommunityState(newCommunityState);
   };
+
+  useEffect(() => {
+    handleChange(communityState);
+  }, [communityState]);
 
   return (
     <div className="Community">

@@ -20,10 +20,10 @@ function Login({ page }: Params) {
 
   let handleSubmit = () => {
     if (page === PageOptions.Match) {
-      return navigate(`/match/${params.match}/${params.team}/scout`, { state: { user: name } });
+      return navigate(`/match/${params.match}/${params.team}/${encodeURIComponent(name)}/scout`);
     }
 
-    return navigate(`/pit/${params.team}/scout`, { state: { user: name } });
+    return navigate(`/pit/${params.team}/${encodeURIComponent(name)}/scout`);
   };
 
   return (

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dropdown.css";
 import { useState } from "react";
 
 interface Props {
   options: string[];
+  defaultOption?: string;
+  handleChange: (newOption: string) => void;
 }
 
-function Dropdown({ options }: Props) {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+function Dropdown({ options, defaultOption, handleChange }: Props) {
+  const [selectedOption, setSelectedOption] = useState(defaultOption || options[0]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (option: string) => {
@@ -18,6 +20,10 @@ function Dropdown({ options }: Props) {
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    handleChange(selectedOption);
+  }, [selectedOption]);
 
   return (
     <div className="Dropdown">

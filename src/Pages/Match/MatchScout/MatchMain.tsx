@@ -19,13 +19,16 @@ function MatchMain() {
       <div className="MatchMain">
         <p className="matchScoutText">MATCH SCOUT</p>
         <LargeButton onClick={() => setPage(Page.AutoCommunity)}>Auto</LargeButton>
-        <LargeButton onClick={() => setPage(Page.AutoCommunity)}>Teleop</LargeButton>
+        <LargeButton onClick={() => setPage(Page.TeleopCommunity)}>Teleop</LargeButton>
         <p className="matchDefenseText">DEFENSE</p>
         <StarSelector
           defaultRating={defense}
           onChange={(rating) => updateFormValue("defense", rating)}
         ></StarSelector>
-        <CommentBox onChange={(comment) => updateFormValue("comment", comment)}></CommentBox>
+        <CommentBox
+          onChange={(comment) => updateFormValue("comment", comment)}
+          defaultValue={comment}
+        ></CommentBox>
         <SmallButton>EXPORT QR</SmallButton>
         <SmallButton onClick={submitForm}>SUBMIT FORM</SmallButton>
       </div>

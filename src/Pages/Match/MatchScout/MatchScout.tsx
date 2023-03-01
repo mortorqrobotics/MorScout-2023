@@ -30,9 +30,9 @@ const MatchContext = React.createContext<MatchContext>({
 });
 
 enum Page {
-  AutoCommunity,
-  TeleopCommunity,
-  Main,
+  AutoCommunity = "auto_community",
+  TeleopCommunity = "teleop_community",
+  Main = "main",
 }
 
 type FormValueKeys = keyof FormValues;
@@ -44,9 +44,7 @@ let defaultCommunity = {
 };
 
 function MatchScout() {
-  let { match: match_number, team: team_number } = useParams();
-  let { state } = useLocation();
-  let { user: scouter } = state;
+  let { match: match_number, team: team_number, user: scouter } = useParams();
   let [page, setPage] = useState(Page.Main);
 
   let [formValues, setFormValues] = useState<FormValues>({
@@ -75,9 +73,9 @@ function MatchScout() {
         {page === Page.Main ? (
           <MatchMain></MatchMain>
         ) : page == Page.TeleopCommunity ? (
-          <CommunityPage></CommunityPage>
+          <CommunityPage page={page}></CommunityPage>
         ) : (
-          <CommunityPage></CommunityPage>
+          <CommunityPage page={page}></CommunityPage>
         )}
       </MatchContext.Provider>
     </div>
@@ -85,4 +83,4 @@ function MatchScout() {
 }
 
 export default MatchScout;
-export { MatchContext, Page };
+export { MatchContext, Page, defaultCommunity };
