@@ -10,7 +10,8 @@ import StarSelector from "Components/General/StarSelector";
 import BackArrow from "Components/General/BackArrow";
 
 function MatchMain() {
-  let { setPage, updateFormValue, submitForm, formValues } = useContext<MatchContext>(MatchContext);
+  let { defense, comment, setPage, updateFormValue, submitForm } =
+    useContext<MatchContext>(MatchContext);
 
   return (
     <>
@@ -20,7 +21,10 @@ function MatchMain() {
         <LargeButton onClick={() => setPage(Page.AutoCommunity)}>Auto</LargeButton>
         <LargeButton onClick={() => setPage(Page.AutoCommunity)}>Teleop</LargeButton>
         <p className="matchDefenseText">DEFENSE</p>
-        <StarSelector onChange={(rating) => updateFormValue("defense", rating)}></StarSelector>
+        <StarSelector
+          defaultRating={defense}
+          onChange={(rating) => updateFormValue("defense", rating)}
+        ></StarSelector>
         <CommentBox onChange={(comment) => updateFormValue("comment", comment)}></CommentBox>
         <SmallButton>EXPORT QR</SmallButton>
         <SmallButton onClick={submitForm}>SUBMIT FORM</SmallButton>

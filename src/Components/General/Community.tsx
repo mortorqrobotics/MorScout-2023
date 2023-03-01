@@ -25,12 +25,6 @@ interface CommunityState {
 
 type Rows = keyof CommunityState;
 
-let defaultCommunity = {
-  B: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-  M: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-  T: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
-};
-
 let communityColors = [
   Color.Red,
   Color.Blue,
@@ -57,14 +51,17 @@ let communityPieceTypes = [
 
 type setCurrentPieceType = (row: Rows, index: number, newValue: CurrentPiece) => void;
 
-function Community() {
+interface Props {
+  defaultCommunity: CommunityState;
+}
+
+function Community({ defaultCommunity }: Props) {
   let [communityState, setCommunityState] = useState<CommunityState>(defaultCommunity);
 
   let setCurrentPiece = (row: Rows, index: number, newValue: CurrentPiece) => {
     let newCommunityState = cloneDeep(communityState);
     newCommunityState[row][index] = newValue;
-    setCommunityState(communityState);
-    console.log(newCommunityState);
+    setCommunityState(newCommunityState);
   };
 
   return (
@@ -99,7 +96,7 @@ function Community() {
         return (
           <Node
             color={color}
-            pieceType={communityPieceTypes[i]}
+            pieceType={PieceTypes.Both}
             currentPiece={communityState["B"][i]}
             row={"B"}
             index={i}
@@ -113,4 +110,4 @@ function Community() {
 }
 
 export default Community;
-export type { CommunityState, CurrentPiece, setCurrentPieceType, Rows };
+export type { CommunityState, CurrentPiece, setCurrentPieceType, Rows, CommunityRow };

@@ -30,7 +30,7 @@ function Node({ color, pieceType, currentPiece, setCurrentPiece, row, index }: P
     <div
       className="Node"
       style={{ backgroundColor: `var(--${color})` }}
-      onClick={() => cycleNode(pieceType, currentPiece, row, index, setCurrentPiece)}
+      onClick={() => setCurrentPiece(row, index, nextPiece(pieceType, currentPiece))}
     >
       {currentPiece === "Cone" ? (
         <img src={Cone} />
@@ -43,23 +43,17 @@ function Node({ color, pieceType, currentPiece, setCurrentPiece, row, index }: P
   );
 }
 
-function cycleNode(
-  pieceType: PieceTypes,
-  currentPiece: CurrentPiece,
-  row: Rows,
-  index: number,
-  setPiece: setCurrentPieceType
-) {
+function nextPiece(pieceType: PieceTypes, currentPiece: CurrentPiece): CurrentPiece {
   if (pieceType == PieceTypes.Cone) {
-    if (currentPiece == "Cone") return setPiece(row, index, "None");
-    setPiece(row, index, "Cone");
+    if (currentPiece == "Cone") return "None";
+    return "Cone";
   } else if (pieceType == PieceTypes.Cube) {
-    if (currentPiece == "Cube") return setPiece(row, index, "None");
-    setPiece(row, index, "Cube");
+    if (currentPiece == "Cube") return "None";
+    return "Cube";
   } else {
-    if (currentPiece == "None") return setPiece(row, index, "Cone");
-    else if (currentPiece == "Cone") return setPiece(row, index, "Cube");
-    setPiece(row, index, "None");
+    if (currentPiece == "None") return "Cone";
+    else if (currentPiece == "Cone") return "Cube";
+    return "None";
   }
 }
 

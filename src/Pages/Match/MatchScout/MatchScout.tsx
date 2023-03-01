@@ -4,7 +4,7 @@ import MatchMain from "./MatchMain";
 import { useLocation, useParams } from "react-router-dom";
 import CommunityPage from "./CommunityPage";
 import clone from "lodash.clonedeep";
-import type { CommunityState } from "Components/General/Community";
+import type { CommunityRow, CommunityState } from "Components/General/Community";
 
 interface FormValues {
   team_number?: string;
@@ -20,7 +20,6 @@ interface MatchContext extends FormValues {
   setPage: any;
   updateFormValue: any;
   submitForm: any;
-  formValues: any;
 }
 
 // TODO: FIX THIS
@@ -28,7 +27,6 @@ const MatchContext = React.createContext<MatchContext>({
   setPage: "",
   updateFormValue: "",
   submitForm: "",
-  formValues: "",
 });
 
 enum Page {
@@ -38,6 +36,12 @@ enum Page {
 }
 
 type FormValueKeys = keyof FormValues;
+
+let defaultCommunity = {
+  B: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+  M: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+  T: [...new Array(9).fill(0).map(() => "None")] as CommunityRow,
+};
 
 function MatchScout() {
   let { match: match_number, team: team_number } = useParams();
@@ -49,8 +53,8 @@ function MatchScout() {
     team_number,
     match_number,
     scouter,
-    auto_community: undefined,
-    teleop_community: undefined,
+    auto_community: defaultCommunity,
+    teleop_community: defaultCommunity,
     defense: 0,
     comment: "",
   });
@@ -67,9 +71,7 @@ function MatchScout() {
 
   return (
     <div className="MatchScout">
-      <MatchContext.Provider
-        value={{ ...formValues, setPage, updateFormValue, submitForm, formValues }}
-      >
+      <MatchContext.Provider value={{ ...formValues, setPage, updateFormValue, submitForm }}>
         {page === Page.Main ? (
           <MatchMain></MatchMain>
         ) : page == Page.TeleopCommunity ? (

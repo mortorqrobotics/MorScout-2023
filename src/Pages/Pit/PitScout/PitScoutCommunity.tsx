@@ -9,7 +9,7 @@ function PitScoutCommunity() {
 
   return (
     <div className="PitScoutCommunity">
-      <Community></Community>
+      {/* <Community></Community> */}
       <SmallButton onClick={() => setPage(PitPages.Main)}>DONE</SmallButton>
     </div>
   );

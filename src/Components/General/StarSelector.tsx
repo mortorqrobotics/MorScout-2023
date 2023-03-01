@@ -4,10 +4,11 @@ import "./StarSelector.css";
 
 interface Props {
   onChange?: (newRating: number) => void;
+  defaultRating?: number;
 }
 
-function StarSelector({ onChange = () => {} }: Props) {
-  let [rating, setRating] = useState(0);
+function StarSelector({ onChange = () => {}, defaultRating = 0 }: Props) {
+  let [rating, setRating] = useState(defaultRating);
 
   let handleClick = (i: number) => {
     if (i + 1 === rating && rating !== 0) return setRating(0);
