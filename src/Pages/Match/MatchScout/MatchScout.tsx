@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MatchScout.css";
 import MatchMain from "./MatchMain";
-import { useLocation, useParams } from "react-router-dom";
+import { redirect, useLocation, useNavigate, useParams } from "react-router-dom";
 import CommunityPage from "./CommunityPage";
 import clone from "lodash.clonedeep";
 import type { CommunityRow, CommunityState } from "Components/General/Community";
@@ -46,6 +46,7 @@ let defaultCommunity = {
 function MatchScout() {
   let { match: match_number, team: team_number, user: scouter } = useParams();
   let [page, setPage] = useState(Page.Main);
+  let navigate = useNavigate();
 
   let [formValues, setFormValues] = useState<FormValues>({
     team_number,
@@ -57,8 +58,20 @@ function MatchScout() {
     comment: "",
   });
 
-  let submitForm = () => {
-    console.log(formValues);
+  let submitForm = async () => {
+    let response = await fetch(
+      `https://dcgnonpccjghlrgernjw.functions.supabase.co/server/api/matchScout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      }
+    );
+    if (response.status !== 200) return alert("Failed!");
+
+    navigate("/");
   };
 
   let updateFormValue = (valueKey: FormValueKeys, newValue: any) => {

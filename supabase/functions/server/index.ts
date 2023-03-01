@@ -1,22 +1,76 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
-
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { getMatchTeams, getTeams } from "./blueAllianceController.ts";
+import { createMatchDatabase } from "./matchScoutController.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { corsHeaders } from "../_shared/cors.ts";
+import { createPitDatabase } from "./pitScoutController.ts";
 
-console.log("Hello from Functions!");
+const supabaseClient = createClient(
+  // Supabase API URL - env var exported by default.
+  Deno.env.get("SUPABASE_URL") ?? "",
+  // Supabase API ANON KEY - env var exported by default.
+  Deno.env.get("SUPABASE_ANON_KEY") ?? ""
+  // Create client with Auth context of the user that called the function.
+  // This way your row-level-security (RLS) policies are applied.
+  // { global: { headers: { Authorization: req.headers.get("Authorization")! } } }
+);
+
+const BASE_URL = "/server";
+
+const BASE_ROUTE = new URLPattern({ pathname: `${BASE_URL}/` });
+const MATCH_ROUTE = new URLPattern({ pathname: `${BASE_URL}/api/matchTeams` });
+const TEAMS_ROUTE = new URLPattern({ pathname: `${BASE_URL}/api/teams` });
+const MATCH_POST_ROUTE = new URLPattern({ pathname: `${BASE_URL}/api/matchScout` });
+const PIT_POST_ROUTE = new URLPattern({ pathname: `${BASE_URL}/api/pitScout` });
 
 serve(async (req) => {
-  const { name } = await req.json();
-  const data = {
-    message: `Hello ${name}!`,
-  };
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
 
-  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } });
+  if (BASE_ROUTE.test(req.url)) {
+    return new Response("Hello World!");
+  }
+
+  if (MATCH_ROUTE.test(req.url)) {
+    const matchTeams = await getMatchTeams();
+    return new Response(JSON.stringify(matchTeams), {
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
+  }
+
+  if (TEAMS_ROUTE.test(req.url)) {
+    const teams = await getTeams();
+    return new Response(JSON.stringify(teams), {
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+    });
+  }
+
+  if (MATCH_POST_ROUTE.test(req.url)) {
+    if (req.method === "POST") {
+      const data = await req.json();
+      const matchData = createMatchDatabase(data);
+
+      await supabaseClient.from("MatchScout").insert([matchData]);
+
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+  }
+
+  if (PIT_POST_ROUTE.test(req.url)) {
+    if (req.method === "POST") {
+      const data = await req.json();
+      const pitData = createPitDatabase(data);
+
+      await supabaseClient.from("PitScout").insert([pitData]);
+
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+  }
+
+  return new Response("Route not found");
 });
-
-// To invoke:
-// curl -i --location --request POST 'https://dcgnonpccjghlrgernjw.functions.supabase.co/server' \
-//   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0' \
-//   --header 'Content-Type: application/json' \
-//   --data '{"name":"Functions"}'

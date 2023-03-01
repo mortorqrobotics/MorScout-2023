@@ -27,6 +27,7 @@ function PitScoutMain() {
     end_game,
     defense,
     comments,
+    submitForm,
   } = useContext(PitContext);
 
   return (
@@ -137,7 +138,7 @@ function PitScoutMain() {
           ></CommentBox>
         </LabeledComponent>
 
-        <SmallButton>SUBMIT</SmallButton>
+        <SmallButton onClick={submitForm}>SUBMIT</SmallButton>
       </div>
     </>
   );

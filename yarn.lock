@@ -1190,10 +1190,10 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-supabase@^1.40.1:
-  version "1.40.1"
-  resolved "https://registry.yarnpkg.com/supabase/-/supabase-1.40.1.tgz#5bc7dae2764c222d30040fa1d8b6db5b4e700922"
-  integrity sha512-0S435roOVvpuBQL0PTQ8OlsgJR6SRrkWO4hWkmw+Qjf7qVVDPLt4s2gHRYWZkoO00/JZp/kCZjzA8tdAJ6DmrQ==
+supabase@^1.40.4:
+  version "1.40.4"
+  resolved "https://registry.yarnpkg.com/supabase/-/supabase-1.40.4.tgz#164e6826910bc3f101e26f28b7723f6d4b9e540f"
+  integrity sha512-hcEWkYbhuB2/s2TeVZgI6DNT48XaEbix+JWoUN0/Rl7sOMM6MKkqvkmJMhMvupol0WbLQp3zBCM+07aUn/7qbw==
   dependencies:
     bin-links "^4.0.1"
     node-fetch "^3.2.10"

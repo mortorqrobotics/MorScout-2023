@@ -1,7 +1,7 @@
 import { CommunityState } from "Components/General/Community";
 import { defaultCommunity } from "Pages/Match/MatchScout/MatchScout";
 import React, { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./PitScout.css";
 import PitScoutCommunity from "./PitScoutCommunity";
 import PitScoutMain from "./PitScoutMain";
@@ -37,28 +37,34 @@ interface PitContext extends FormValuesPit {
   page?: PitPages;
   setPage: any;
   updateFormValue: (valueKey: PitKeys, newValue: FormValuesPit[PitKeys]) => void;
+  submitForm: () => void;
 }
 
-const PitContext = React.createContext<PitContext>({ setPage: "", updateFormValue: () => {} });
+const PitContext = React.createContext<PitContext>({
+  setPage: "",
+  updateFormValue: () => {},
+  submitForm: () => {},
+});
 
 function PitScout() {
+  let navigate = useNavigate();
   let { team: team_number, user: scouter } = useParams();
   let [page, setPage] = useState(PitPages.Main);
   let [formValues, setFormValues] = useState<FormValuesPit>({
     team_number,
     scouter,
     weight: "",
-    drivetrain: "",
-    scoring_position: "",
-    preferred_game_piece: "",
+    drivetrain: "Swerve Drive",
+    scoring_position: "Bottom",
+    preferred_game_piece: "Cone",
     intake: false,
-    knocked_over_cones: "",
-    preferred_pickup_area: "",
-    preferred_substation: "",
+    knocked_over_cones: "Only knocked",
+    preferred_pickup_area: "Floor",
+    preferred_substation: "Single substation",
     auto_community: 0,
-    auto_charge_station: "",
+    auto_charge_station: "None",
     ideal_community: defaultCommunity,
-    end_game: "",
+    end_game: "Docked",
     defense: 0,
     comments: "",
   });
@@ -69,9 +75,25 @@ function PitScout() {
     setFormValues(newFormValues);
   };
 
+  let submitForm = async () => {
+    let response = await fetch(
+      `https://dcgnonpccjghlrgernjw.functions.supabase.co/server/api/pitScout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValues),
+      }
+    );
+    if (response.status !== 200) return alert("Failed!");
+
+    navigate("/");
+  };
+
   return (
     <div className="PitScout">
-      <PitContext.Provider value={{ ...formValues, setPage, updateFormValue }}>
+      <PitContext.Provider value={{ ...formValues, setPage, updateFormValue, submitForm }}>
         {page == PitPages.Main ? (
           <PitScoutMain></PitScoutMain>
         ) : (
