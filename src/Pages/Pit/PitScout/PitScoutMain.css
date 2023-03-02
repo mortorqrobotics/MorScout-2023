@@ -41,6 +41,11 @@
   margin-bottom: 20px;
 }
 
-.PitScoutMain .LabeledComponent .SmallButton {
+.PitScoutMain .LabeledComponent .SmallButton,
+.PitScoutMain .LabeledComponent .CommentBox {
+  width: 100%;
+}
+
+.PitScoutMain textarea {
   width: 100%;
 }
