@@ -4,7 +4,6 @@ import "./SmallButton.css";
 interface Props {
   children: string;
   onClick?: () => void;
-  to?: string;
   disabled?: boolean;
 }
 

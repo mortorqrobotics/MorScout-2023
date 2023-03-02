@@ -1,0 +1,15 @@
+.AdminCommunity {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.AdminCommunity p {
+  margin-top: 8vh;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: var(--text-gray);
+}

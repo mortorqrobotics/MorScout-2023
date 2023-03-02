@@ -21,10 +21,14 @@ interface Props {
 }
 
 function InputBox({ onSubmit, updateText, defaultValue, inputmode = "text" }: Props) {
+  /**
+   * Not working, runs on submit but argument is undefined.
+   * Can be used to tell when enter is pressed but use updateText and useState to get the value
+   */
   let preventDefaultSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!onSubmit) return;
-    let target = e.target as HTMLInputElement;
+    let target = e.target as HTMLFormElement;
     onSubmit(target.value);
   };
 

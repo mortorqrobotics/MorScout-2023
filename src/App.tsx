@@ -7,6 +7,8 @@ import "./App.css";
 import Home from "./Pages/Home";
 import PitTeamList from "Pages/Pit/PitTeamList/PitTeamList";
 import PitScout from "Pages/Pit/PitScout/PitScout";
+import Admin from "Pages/Admin/Admin";
+import AdminCommunity from "Pages/Admin/AdminCommunity";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           ></Route>
           <Route path="/pit/:team/login" element={<Login page={PageOptions.Pit} />}></Route>
           <Route path="/pit/teams" element={<PitTeamList />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/admin/community" element={<AdminCommunity />}></Route>
         </Route>
         <Route path="/pit/:team/:user/scout" element={<PitScout />}></Route>
         <Route path="/match/:match/:team/:user/scout" element={<MatchScout />}></Route>
