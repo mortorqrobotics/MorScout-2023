@@ -33,7 +33,6 @@ async function getTeams(): Promise<string[]> {
     },
   });
   const data: Team[] = await response.json();
-  console.log(data);
   data.forEach((object) => {
     teams.push(object.team_number.toString());
   });

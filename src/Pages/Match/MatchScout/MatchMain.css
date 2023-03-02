@@ -36,3 +36,7 @@
 .MatchMain > .SmallButton {
   margin-top: 16px;
 }
+
+.MatchMain .SmallButton:last-of-type {
+  margin-bottom: 20px;
+}
