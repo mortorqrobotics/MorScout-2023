@@ -25,7 +25,7 @@ function createMatchDatabase(data: MatchScout): MatchDatabase {
   const matchData: MatchDatabase = {
     ...getAutoData(data),
     team_number: data.team_number,
-    scouter: null,
+    scouter: data.scouter,
     comment: data.comment,
     defense: data.defense,
     end_game: null,

@@ -1,7 +1,7 @@
 import CommentBox from "Components/General/CommentBox";
 import LargeButton from "Components/General/LargeButton";
 import SmallButton from "Components/General/SmallButton";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./MatchMain.css";
 import { MatchContext, Page } from "./MatchScout";
 import StarSelector from "Components/General/StarSelector";
@@ -10,6 +10,8 @@ import BackArrow from "Components/General/BackArrow";
 function MatchMain() {
   let { defense, comment, setPage, updateFormValue, submitForm } =
     useContext<MatchContext>(MatchContext);
+
+  let [submitted, setSubmitted] = useState(false);
 
   return (
     <>
@@ -28,7 +30,15 @@ function MatchMain() {
           defaultValue={comment}
         ></CommentBox>
         <SmallButton>EXPORT QR</SmallButton>
-        <SmallButton onClick={submitForm}>SUBMIT FORM</SmallButton>
+        <SmallButton
+          onClick={() => {
+            setSubmitted(true);
+            submitForm();
+          }}
+          disabled={submitted}
+        >
+          SUBMIT FORM
+        </SmallButton>
       </div>
     </>
   );
