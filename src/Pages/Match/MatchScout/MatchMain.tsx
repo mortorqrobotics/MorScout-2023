@@ -1,9 +1,7 @@
 import CommentBox from "Components/General/CommentBox";
 import LargeButton from "Components/General/LargeButton";
 import SmallButton from "Components/General/SmallButton";
-import Slider from "Components/General/Slider";
 import React, { useContext } from "react";
-import { useLocation, useParams } from "react-router-dom";
 import "./MatchMain.css";
 import { MatchContext, Page } from "./MatchScout";
 import StarSelector from "Components/General/StarSelector";

@@ -18,7 +18,6 @@ function CommunityPage({ page }: Props) {
 
   let chooseCommunity = (): CommunityState => {
     if (page === Page.AutoCommunity) return auto_community as CommunityState;
-    if (isEqual(teleop_community, defaultCommunity)) return auto_community as CommunityState;
     return teleop_community as CommunityState;
   };
 
