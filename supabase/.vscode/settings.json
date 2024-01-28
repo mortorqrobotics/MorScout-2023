@@ -1,4 +1,6 @@
 {
   "deno.enable": true,
-  "emmet.excludeLanguages": ["typescript"]
+  "emmet.excludeLanguages": ["typescript"],
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
 }
